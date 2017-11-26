@@ -1,12 +1,15 @@
 /// <reference path="../Transformation"/>
+/// <reference path="../RenderSystem"/>
 
 class Plant implements Entity
 {
-    public transformation: Transformation;
+    private _renderSystem : RenderSystem;
+    public Transformation: Transformation;
 
-    constructor(transformation:Transformation)
+    constructor(renderSystem : RenderSystem, transformation : Transformation)
     {
-        this.transformation = transformation;
+        this._renderSystem = renderSystem;
+        this.Transformation = transformation;
     }
 
     update(delta:number):void
@@ -15,7 +18,7 @@ class Plant implements Entity
 
     draw():void
     {
-        let position : Vector = this.transformation.position;
-        Renderer.DrawLine(position.x, position.y, position.x, position.y + 10);
+        let position : Vector = this.Transformation.position;
+        this._renderSystem.DrawLine(position.x, position.y, position.x, position.y + 10);
     }
 }

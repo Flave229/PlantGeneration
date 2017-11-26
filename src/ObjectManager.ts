@@ -8,9 +8,9 @@ class ObjectManager
 {
     private plant: Entity;
 
-    constructor()
+    constructor(renderSystem : RenderSystem)
     {
-        this.plant = new Plant(new Transformation(new Vector(canvas.width / 2, canvas.height - 20)));
+        this.plant = new Plant(renderSystem, new Transformation(new Vector(canvas.width / 2, canvas.height - 20)));
     }
 
     update(delta: number)

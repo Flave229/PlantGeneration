@@ -1,5 +1,5 @@
 interface Entity {
-    transformation: Transformation;
+    Transformation : Transformation;
 
     update(delta: number): void;
     draw(): void;
