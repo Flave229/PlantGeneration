@@ -1,5 +1,6 @@
 ///<reference path="RenderSystem.ts"/>
 ///<reference path="Vector.ts"/>
+///<reference path="Common/Stack.ts"/>
 
 class TurtlePen
 {
@@ -8,12 +9,16 @@ class TurtlePen
     private _currentPosition : Vector;
     private _forwardStep : number;
     private _rotationStep : number;
+    private _positionStack : Stack<Vector>;
+    private _rotationStack : Stack<number>;
 
     constructor(renderSystem : RenderSystem)
     {
         this._renderSystem = renderSystem;
-        this._forwardStep = -40;
-        this._rotationStep = Math.PI / 6;
+        this._forwardStep = -5;
+        this._rotationStep = 0.3926991; //Math.PI / 6;
+        this._positionStack = new Stack<Vector>();
+        this._rotationStack = new Stack<number>();
     }
 
     Draw(startingPosition : Vector, commandString : string)
@@ -29,6 +34,10 @@ class TurtlePen
                 this.RotateLeft();
             else if (command == "+")
                 this.RotateRight();
+            else if (command == "[")
+                this.StoreTransformation();
+            else if (command == "]")
+                this.RetrieveLastTransformation();
         }
     }
 
@@ -49,5 +58,17 @@ class TurtlePen
     private RotateRight()
     {
         this._currentRotation -= this._rotationStep;
+    }
+
+    private StoreTransformation()
+    {
+        this._positionStack.push(this._currentPosition);
+        this._rotationStack.push(this._currentRotation);
+    }
+
+    private RetrieveLastTransformation()
+    {
+        this._currentPosition = this._positionStack.pop();
+        this._currentRotation = this._rotationStack.pop();
     }
 }
