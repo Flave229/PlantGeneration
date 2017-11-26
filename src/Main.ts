@@ -7,10 +7,10 @@
 
 InputHandler.inititialise();
 
-let Debugging = new Debugger();
-let FramesPerSecond = new FramesPerSecond();
-let RenderSystem = new RenderSystem();
-let ObjectManager = new ObjectManager(RenderSystem);
+let debugging: Debugger = new Debugger();
+let framesPerSecond: FramesPerSecond = new FramesPerSecond();
+let renderSystem: RenderSystem = new RenderSystem();
+let objectManager: ObjectManager = new ObjectManager(renderSystem);
 
 function mainLoop()
 {
@@ -25,16 +25,16 @@ requestAnimationFrame(mainLoop);
 function update()
 {
     let delta = Timer.getDeltaTime();
-    Debugging.update(delta);
-    FramesPerSecond.update(delta);
-    ObjectManager.update(delta);
+    debugging.update(delta);
+    framesPerSecond.update(delta);
+    objectManager.update(delta);
 }
 
 function draw()
 {
-    RenderSystem.RefreshScreenBuffer();
-    RenderSystem.DrawText(10, 15, 'FPS: ' + FramesPerSecond.getFrameCount());
+    renderSystem.RefreshScreenBuffer();
+    renderSystem.DrawText(10, 15, 'FPS: ' + framesPerSecond.getFrameCount());
 
-    ObjectManager.draw();
+    objectManager.draw();
 }
 
