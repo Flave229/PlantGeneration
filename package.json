@@ -1,0 +1,21 @@
+{
+  "name": "game",
+  "version": "0.0.1",
+  "description": "game",
+  "main": "index.html",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.46",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-typescript": "^3.1.6",
+    "gulp-util": "^3.0.8",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "path": "^0.12.7",
+    "typescript": "^2.2.1"
+  }
+}
