@@ -10,8 +10,7 @@ InputHandler.inititialise();
 let debugging: Debugger = new Debugger();
 let framesPerSecond: FramesPerSecond = new FramesPerSecond();
 let renderSystem: RenderSystem = new RenderSystem();
-let turtle: TurtlePen = new TurtlePen(renderSystem);
-let objectManager: ObjectManager = new ObjectManager(turtle);
+let objectManager: ObjectManager = new ObjectManager(renderSystem);
 
 function mainLoop()
 {
@@ -28,7 +27,7 @@ function update()
     let delta = Timer.getDeltaTime();
     debugging.update(delta);
     framesPerSecond.update(delta);
-    objectManager.update(delta);
+    objectManager.Update(delta);
 }
 
 function draw()
@@ -36,6 +35,6 @@ function draw()
     renderSystem.RefreshScreenBuffer();
     renderSystem.DrawText(10, 15, 'FPS: ' + framesPerSecond.getFrameCount());
 
-    objectManager.draw();
+    objectManager.Draw();
 }
 

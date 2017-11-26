@@ -12,11 +12,11 @@ class TurtlePen
     private _positionStack : Stack<Vector>;
     private _rotationStack : Stack<number>;
 
-    constructor(renderSystem : RenderSystem)
+    constructor(renderSystem : RenderSystem, angleStep : number, movementStep : number)
     {
         this._renderSystem = renderSystem;
-        this._forwardStep = -5;
-        this._rotationStep = 0.3926991; //Math.PI / 6;
+        this._forwardStep = movementStep;
+        this._rotationStep = angleStep;
         this._positionStack = new Stack<Vector>();
         this._rotationStack = new Stack<number>();
     }

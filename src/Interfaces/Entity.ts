@@ -1,6 +1,6 @@
 interface Entity {
     Transformation : Transformation;
 
-    update(delta: number): void;
-    draw(): void;
+    Update(delta: number): void;
+    Draw(): void;
 }
