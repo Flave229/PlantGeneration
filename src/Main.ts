@@ -10,7 +10,8 @@ InputHandler.inititialise();
 let debugging: Debugger = new Debugger();
 let framesPerSecond: FramesPerSecond = new FramesPerSecond();
 let renderSystem: RenderSystem = new RenderSystem();
-let objectManager: ObjectManager = new ObjectManager(renderSystem);
+let turtle: TurtlePen = new TurtlePen(renderSystem);
+let objectManager: ObjectManager = new ObjectManager(turtle);
 
 function mainLoop()
 {

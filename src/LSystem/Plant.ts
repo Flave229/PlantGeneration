@@ -1,14 +1,16 @@
 /// <reference path="../Transformation"/>
 /// <reference path="../RenderSystem"/>
+///<reference path="../TurtlePen.ts"/>
 
 class Plant implements Entity
 {
-    private _renderSystem : RenderSystem;
+    private _turtle : TurtlePen;
     public Transformation: Transformation;
 
-    constructor(renderSystem : RenderSystem, transformation : Transformation)
+
+    constructor(turtle : TurtlePen, transformation : Transformation)
     {
-        this._renderSystem = renderSystem;
+        this._turtle = turtle;
         this.Transformation = transformation;
     }
 
@@ -18,7 +20,6 @@ class Plant implements Entity
 
     draw():void
     {
-        let position : Vector = this.Transformation.position;
-        this._renderSystem.DrawLine(position.x, position.y, position.x, position.y + 10);
+        this._turtle.Draw(this.Transformation.position, "FFF-F--F++F+F");
     }
 }
