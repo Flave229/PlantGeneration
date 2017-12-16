@@ -17,6 +17,13 @@ class RenderSystem
         this._context.fillRect(x, y, width, height);
     }
 
+    DrawRectWithColor(x: number, y: number, width: number, height: number, color : string)
+    {
+        this._context.fillStyle = color;
+        this.DrawRect(x, y, width, height);
+        this._context.fillStyle = 'black';
+    }
+
     DrawLine(xStart: number, yStart: number, xEnd: number, yEnd: number)
     {
         this._context.beginPath();
