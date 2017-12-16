@@ -52,12 +52,12 @@ class TurtlePen
 
     private RotateLeft()
     {
-        this._currentRotation += this._rotationStep;
+        this._currentRotation -= this._rotationStep;
     }
 
     private RotateRight()
     {
-        this._currentRotation -= this._rotationStep;
+        this._currentRotation += this._rotationStep;
     }
 
     private StoreTransformation()

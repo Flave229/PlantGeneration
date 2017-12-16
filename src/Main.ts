@@ -3,6 +3,7 @@
 /// <reference path="./RenderSystem"/>
 /// <reference path="./FramesPerSecond"/>
 /// <reference path="./ObjectManager"/>
+/// <reference path="./ParticleSystemSpike.ts"/>
 ///<reference path="Helpers/Debugger.ts"/>
 
 InputHandler.inititialise();
@@ -10,7 +11,8 @@ InputHandler.inititialise();
 let debugging: Debugger = new Debugger();
 let framesPerSecond: FramesPerSecond = new FramesPerSecond();
 let renderSystem: RenderSystem = new RenderSystem();
-let objectManager: ObjectManager = new ObjectManager(renderSystem);
+//let objectManager: ObjectManager = new ObjectManager(renderSystem);
+let particleSystemSpike : ParticleSystemSpike = new ParticleSystemSpike(renderSystem);
 
 function mainLoop()
 {
@@ -27,7 +29,8 @@ function update()
     let delta = Timer.getDeltaTime();
     debugging.update(delta);
     framesPerSecond.update(delta);
-    objectManager.Update(delta);
+    particleSystemSpike.Update(delta);
+    //objectManager.Update(delta);
 }
 
 function draw()
@@ -35,6 +38,7 @@ function draw()
     renderSystem.RefreshScreenBuffer();
     renderSystem.DrawText(10, 15, 'FPS: ' + framesPerSecond.getFrameCount());
 
-    objectManager.Draw();
+    particleSystemSpike.Draw();
+    //objectManager.Draw();
 }
 
