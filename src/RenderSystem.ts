@@ -24,12 +24,15 @@ class RenderSystem
         this._context.fillStyle = 'black';
     }
 
-    DrawLine(xStart: number, yStart: number, xEnd: number, yEnd: number)
+    DrawLine(xStart: number, yStart: number, xEnd: number, yEnd: number, width: number)
     {
         this._context.beginPath();
+        this._context.lineWidth = width;
         this._context.moveTo(xStart, yStart);
         this._context.lineTo(xEnd, yEnd);
         this._context.stroke();
+
+        this._context.lineWidth = 1;
     }
 
     DrawText(x: number, y: number, text: string)

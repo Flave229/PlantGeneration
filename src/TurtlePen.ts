@@ -47,7 +47,7 @@ class TurtlePen
         var rotatedX = this._forwardStep * Math.sin(this._currentRotation);
         var rotatedY = this._forwardStep * Math.cos(this._currentRotation);
         this._currentPosition = new Vector(lastPosition.x + rotatedX, lastPosition.y + rotatedY);
-        this._renderSystem.DrawLine(lastPosition.x, lastPosition.y, this._currentPosition.x, this._currentPosition.y);
+        this._renderSystem.DrawLine(lastPosition.x, lastPosition.y, this._currentPosition.x, this._currentPosition.y, 1);
     }
 
     private RotateLeft()

@@ -8,6 +8,7 @@ class Particle
     public Complete : boolean;
     public FinalPosition : Vector;
     public Immunity : number;
+    public SourceRatio : number;
 
     private _renderSystem : RenderSystem;
     private _startingEnergy : number;
@@ -57,7 +58,7 @@ class Particle
         if (this._deathTimer > 0)
         {
             if (this.ReachedDestination)
-                this._renderSystem.DrawRectWithColor(this.Position.x, this.Position.y, 10, 10, 'red');
+                this._renderSystem.DrawRectWithColor(this.Position.x, this.Position.y, 10, 10, 'green');
             else if (this.Immunity > 0)
                 this._renderSystem.DrawRectWithColor(this.Position.x, this.Position.y, 10, 10, 'blue');
             else
@@ -65,9 +66,9 @@ class Particle
         }
 
         if (this.ReachedDestination)
-            this._renderSystem.DrawLine(this.FinalPosition.x + 5, this.FinalPosition.y + 5, this._deathLocation.x + 5, this._deathLocation.y + 5);
+            this._renderSystem.DrawLine(this.FinalPosition.x + 5, this.FinalPosition.y + 5, this._deathLocation.x + 5, this._deathLocation.y + 5, (this.SourceRatio * 10) / 3);
         else if (this.Complete)
-            this._renderSystem.DrawLine(this.FinalPosition.x + 5, this.FinalPosition.y + 5, this.Position.x + 5, this.Position.y + 5);
+            this._renderSystem.DrawLine(this.FinalPosition.x + 5, this.FinalPosition.y + 5, this.Position.x + 5, this.Position.y + 5, (this.SourceRatio * 10) / 3);
     }
 
     CountdownDeath(delta : number)
@@ -110,6 +111,11 @@ class Particle
             childParticle.FinalPosition = new Vector(this.Position.x, this.Position.y);
             childParticle.Immunity = 1;
 
+            if (this.SourceRatio < 1)
+                childParticle.SourceRatio = this.SourceRatio + 0.3;
+            else
+                childParticle.SourceRatio = 1;
+
             this._particleSystem.AddNewParticle(childParticle);
         }
 
@@ -121,10 +127,9 @@ class Particle
         vectorToSource = new Vector(vectorToSource.x / vectorToSourceMagnitude, vectorToSource.y / vectorToSourceMagnitude);
         vectorToNearestParticle = new Vector(vectorToNearestParticle.x / vectorToNearestParticleMagnitude, vectorToNearestParticle.y / vectorToNearestParticleMagnitude);
 
-        let sourceRatio : number = 0.1;
-        let neighbourRatio : number = 1.0 - sourceRatio;
+        let neighbourRatio : number = 1.0 - this.SourceRatio;
 
-        let movementVector = new Vector((sourceRatio * vectorToSource.x) + (neighbourRatio * vectorToNearestParticle.x), (sourceRatio * vectorToSource.y) + (neighbourRatio * vectorToNearestParticle.y));
+        let movementVector = new Vector((this.SourceRatio * vectorToSource.x) + (neighbourRatio * vectorToNearestParticle.x), (this.SourceRatio * vectorToSource.y) + (neighbourRatio * vectorToNearestParticle.y));
         let movementVectorMagnitude : number = Math.sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
         let normalisedMovementVector : Vector = new Vector(movementVector.x / movementVectorMagnitude, movementVector.y / movementVectorMagnitude);
 

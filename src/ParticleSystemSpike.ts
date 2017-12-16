@@ -14,11 +14,12 @@ class ParticleSystemSpike
         this._particles = new Array();
         this._renderSystem = renderSystem;
 
-        for (let i : number = 0; i < 100; ++i)
+        for (let i : number = 0; i < 1000; ++i)
         {
             let position : Vector = new Vector(canvas.width / 2, canvas.height - 20);
             let velocity : Vector = new Vector((Math.random() - 0.5) * 5, Math.random() * 2 + 3);
             let particle : Particle = new Particle(this, this._renderSystem, position, velocity, Math.random() * 3 + 1);
+            particle.SourceRatio = 0.1;
             this._particles.push(particle);
         }
     }
