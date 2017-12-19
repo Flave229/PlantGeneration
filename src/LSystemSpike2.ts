@@ -34,16 +34,16 @@ class LSystemSpike2
 
         let ruleSet : RuleSet = new RuleSet(rules);
 
-        let system1 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 45) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
+        let system1 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 30) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
         this._plants[0] = new Plant(system1, new Transformation(new Vector(canvas.width / 5 - 20, canvas.height - 40)));
 
-        let system2 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 45) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
+        let system2 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 30) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
         this._plants[1] = new Plant(system2, new Transformation(new Vector(canvas.width * 2 / 5 - 20, canvas.height - 40)));
 
-        let system3 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 45) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
+        let system3 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 30) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
         this._plants[2] = new Plant(system3, new Transformation(new Vector(canvas.width * 3 / 5 - 20, canvas.height - 40)));
 
-        let system4 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 45) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
+        let system4 = new LSystem(renderSystem, axiom, ruleSet, MathHelper.RandomBetween(10, 30) * Math.PI / 180, MathHelper.RandomBetween(-3, -7));
         this._plants[3] = new Plant(system4, new Transformation(new Vector(canvas.width * 4 / 5 - 20, canvas.height - 40)));
     }
 

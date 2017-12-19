@@ -72,6 +72,7 @@ class TurtlePen
 
     private RetrieveLastTransformation()
     {
+        this._renderSystem.DrawRectWithColor(this._currentPosition.x, this._currentPosition.y, 5, 5, "green");
         this._currentPosition = this._positionStack.pop();
         this._currentRotation = this._rotationStack.pop();
     }
