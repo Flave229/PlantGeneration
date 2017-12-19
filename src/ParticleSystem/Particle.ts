@@ -53,7 +53,7 @@ class Particle
         this.Position.y -= energyRatio * this._velocity.y;
     }
 
-    Draw()
+    DrawLeaves()
     {
         if (this._deathTimer > 0)
         {
@@ -64,7 +64,10 @@ class Particle
             else
                 this._renderSystem.DrawRect(this.Position.x, this.Position.y, 10, 10);
         }
+    }
 
+    DrawStem()
+    {
         if (this.ReachedDestination)
             this._renderSystem.DrawLine(this.FinalPosition.x + 5, this.FinalPosition.y + 5, this._deathLocation.x + 5, this._deathLocation.y + 5, (this.SourceRatio * 10) / 3);
         else if (this.Complete)
@@ -92,8 +95,8 @@ class Particle
             let vectorToSource : Vector = new Vector(this._startingPosition.x - this.Position.x, this._startingPosition.y - this.Position.y);
             let vectorToSourceMagnitude : number = Math.sqrt(vectorToSource.x * vectorToSource.x + vectorToSource.y * vectorToSource.y);
             vectorToSource = new Vector(vectorToSource.x / vectorToSourceMagnitude, vectorToSource.y / vectorToSourceMagnitude);
-            this.Position.x += vectorToSource.x * delta * 20;
-            this.Position.y += vectorToSource.y * delta * 20;
+            this.Position.x += vectorToSource.x * delta * 40;
+            this.Position.y += vectorToSource.y * delta * 40;
             return;
         }
 
@@ -112,7 +115,7 @@ class Particle
             childParticle.Immunity = 1;
 
             if (this.SourceRatio < 1)
-                childParticle.SourceRatio = this.SourceRatio + 0.3;
+                childParticle.SourceRatio = this.SourceRatio + 0.1;
             else
                 childParticle.SourceRatio = 1;
 
@@ -133,7 +136,7 @@ class Particle
         let movementVectorMagnitude : number = Math.sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
         let normalisedMovementVector : Vector = new Vector(movementVector.x / movementVectorMagnitude, movementVector.y / movementVectorMagnitude);
 
-        this.Position.x += normalisedMovementVector.x * delta * 20;
-        this.Position.y += normalisedMovementVector.y * delta * 20;
+        this.Position.x += normalisedMovementVector.x * delta * 40;
+        this.Position.y += normalisedMovementVector.y * delta * 40;
     }
 }

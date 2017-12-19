@@ -1,13 +1,14 @@
 ///<reference path="../RenderSystem.ts"/>
 ///<reference path="../TurtlePen.ts"/>
+///<reference path="./RuleSet.ts"/>
 
 class LSystem
 {
     private _currentString : string;
-    private _rules : { [id: string] : string } = {};
+    private _rules : RuleSet;
     private _turtlePen: TurtlePen;
 
-    constructor(renderSystem : RenderSystem, axiom : string, rules : { [id: string]: string }, angleStep : number, movementStep : number)
+    constructor(renderSystem : RenderSystem, axiom : string, rules : RuleSet, angleStep : number, movementStep : number)
     {
         this._currentString = axiom;
         this._rules = rules;
@@ -20,7 +21,7 @@ class LSystem
 
         for(let i = 0, length = this._currentString.length; i < length; ++i)
         {
-            let rule = this._rules[this._currentString[i]];
+            let rule = this._rules.GetRule(this._currentString[i]);
 
             if (rule == undefined)
                 newString += this._currentString[i];

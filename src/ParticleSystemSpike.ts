@@ -33,7 +33,7 @@ class ParticleSystemSpike
             {
                 if(this._particles[i].ReachedDestination)
                 {
-                    this._particles[i].CountdownDeath(delta);
+                    //this._particles[i].CountdownDeath(delta);
                     continue;
                 }
 
@@ -77,7 +77,12 @@ class ParticleSystemSpike
     {
         for (let i : number = 0; i < this._particles.length; ++i)
         {
-            this._particles[i].Draw();
+            this._particles[i].DrawLeaves();
+        }
+
+        for (let i : number = 0; i < this._particles.length; ++i)
+        {
+            this._particles[i].DrawStem();
         }
     }
 

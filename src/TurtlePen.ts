@@ -1,6 +1,7 @@
 ///<reference path="RenderSystem.ts"/>
 ///<reference path="Vector.ts"/>
 ///<reference path="Common/Stack.ts"/>
+///<reference path="Helpers/MathHelper.ts"/>
 
 class TurtlePen
 {
@@ -39,6 +40,9 @@ class TurtlePen
             else if (command == "]")
                 this.RetrieveLastTransformation();
         }
+
+        this._renderSystem.DrawText(startingPosition.x, startingPosition.y + 10, "Angle: " + MathHelper.Round(this._rotationStep, 2));
+        this._renderSystem.DrawText(startingPosition.x, startingPosition.y + 20, "Length: " + MathHelper.Round(this._forwardStep * -1, 2));
     }
 
     private MoveForward()
